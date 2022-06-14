@@ -1,4 +1,6 @@
-﻿namespace VoxelColoring;
+﻿using System.Numerics;
+
+namespace VoxelColoring;
 
 public struct Vector3i
 {
@@ -11,5 +13,10 @@ public struct Vector3i
         X = x;
         Y = y;
         Z = z;
+    }
+
+    public static Vector3 operator *(Vector3i left, float right)
+    {
+        return new Vector3(left.X * right, left.Y * right, left.Z * right);
     }
 }
