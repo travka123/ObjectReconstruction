@@ -5,8 +5,6 @@ using System.Numerics;
 using VoxelColoring;
 using VoxelViewer;
 
-Console.WriteLine("Hello, World!");
-
 ObjectReconstructor.ConsistencyCheck<Rgb24> consistencyCheck = (ReadOnlySpan<Rgb24> colors) =>
 {
     Span<Vector3> vcolors = stackalloc Vector3[colors.Length];
@@ -34,7 +32,9 @@ ObjectReconstructor.ConsistencyCheck<Rgb24> consistencyCheck = (ReadOnlySpan<Rgb
     return true;
 };
 
-FileInfo fileInfo = new FileInfo(@"D:\ObjectReconstruction\Data\Cubes\cubes.conf");
+Console.WriteLine("Hello, World!");
+Console.Write("path to .conf file: ");
+FileInfo fileInfo = new FileInfo(Console.ReadLine()!);
 
 var jsonText = File.ReadAllText(fileInfo.FullName);
 dynamic? set = JsonConvert.DeserializeObject(jsonText);
